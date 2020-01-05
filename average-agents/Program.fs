@@ -1,8 +1,12 @@
-// Learn more about F# at http://fsharp.org
-
 open System
+open Agents
 
 [<EntryPoint>]
 let main argv =
-    printfn "Hello World from F#!"
+    use statsAgent = new StatsAgent()
+    statsAgent.Incr(5.0)
+    statsAgent.Incr(7.0)
+    printfn "%A" (statsAgent.Fetch())
+    statsAgent.Incr(7.0)
+    printfn "%A" (statsAgent.Fetch())
     0 // return an integer exit code
